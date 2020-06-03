@@ -70,6 +70,9 @@ zstyle ':prezto:module:python' conda-init 'on'
 # Editor
 #
 
+# Disable safe ops
+zstyle ':prezto:module:utility' safe-ops 'no'
+
 # Set the key mapping style to 'emacs' or 'vi'.
 zstyle ':prezto:module:editor' key-bindings 'vi'
 
