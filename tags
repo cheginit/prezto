@@ -20,8 +20,8 @@ PREFIX	modules/syntax-highlighting/external/Makefile	/^PREFIX?=\/usr\/local$/;"	
 SHARE_DIR	modules/syntax-highlighting/external/Makefile	/^SHARE_DIR?=$(DESTDIR)$(PREFIX)\/share\/$(NAME)$/;"	m
 SRC_DIR	modules/autosuggestions/external/Makefile	/^SRC_DIR    := .\/src$/;"	m
 SRC_FILES	modules/autosuggestions/external/Makefile	/^SRC_FILES := \\$/;"	m
-TRAPHUP	modules/prompt/external/async/async.zsh	/^	TRAPHUP() {$/;"	f
-TRAPHUP	modules/prompt/external/pure/async.zsh	/^	TRAPHUP() {$/;"	f
+TRAPHUP	modules/prompt/external/async/async.zsh	/^		TRAPHUP() {$/;"	f
+TRAPHUP	modules/prompt/external/pure/async.zsh	/^		TRAPHUP() {$/;"	f
 TerminalSession	modules/autosuggestions/external/spec/terminal_session.rb	/^class TerminalSession$/;"	c
 ZSH	modules/syntax-highlighting/external/Makefile	/^ZSH?=zsh # zsh binary to run tests with$/;"	m
 _	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^    function _$0_fmt() {$/;"	f
@@ -31,6 +31,8 @@ _async_job	modules/prompt/external/async/async.zsh	/^_async_job() {$/;"	f
 _async_job	modules/prompt/external/pure/async.zsh	/^_async_job() {$/;"	f
 _async_notify_trap	modules/prompt/external/async/async.zsh	/^_async_notify_trap() {$/;"	f
 _async_notify_trap	modules/prompt/external/pure/async.zsh	/^_async_notify_trap() {$/;"	f
+_async_send_job	modules/prompt/external/async/async.zsh	/^_async_send_job() {$/;"	f
+_async_send_job	modules/prompt/external/pure/async.zsh	/^_async_send_job() {$/;"	f
 _async_worker	modules/prompt/external/async/async.zsh	/^_async_worker() {$/;"	f
 _async_worker	modules/prompt/external/pure/async.zsh	/^_async_worker() {$/;"	f
 _async_zle_watcher	modules/prompt/external/async/async.zsh	/^_async_zle_watcher() {$/;"	f
@@ -392,6 +394,7 @@ _zsh_highlight_highlighter_regexp_predicate	modules/syntax-highlighting/external
 _zsh_highlight_highlighter_root_paint	modules/syntax-highlighting/external/highlighters/root/root-highlighter.zsh	/^_zsh_highlight_highlighter_root_paint()$/;"	f
 _zsh_highlight_highlighter_root_predicate	modules/syntax-highlighting/external/highlighters/root/root-highlighter.zsh	/^_zsh_highlight_highlighter_root_predicate()$/;"	f
 _zsh_highlight_load_highlighters	modules/syntax-highlighting/external/zsh-syntax-highlighting.zsh	/^_zsh_highlight_load_highlighters()$/;"	f
+_zsh_highlight_main__is_global_alias	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main__is_global_alias() {$/;"	f
 _zsh_highlight_main__is_redirection	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main__is_redirection() {$/;"	f
 _zsh_highlight_main__is_runnable	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main__is_runnable() {$/;"	f
 _zsh_highlight_main__precmd_hook	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main__precmd_hook() {$/;"	f
@@ -401,10 +404,12 @@ _zsh_highlight_main__type	modules/syntax-highlighting/external/highlighters/main
 _zsh_highlight_main_add_many_region_highlights	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_add_many_region_highlights() {$/;"	f
 _zsh_highlight_main_add_region_highlight	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_add_region_highlight() {$/;"	f
 _zsh_highlight_main_calculate_fallback	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_calculate_fallback() {$/;"	f
+_zsh_highlight_main_highlighter__try_expand_parameter	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter__try_expand_parameter()$/;"	f
 _zsh_highlight_main_highlighter_check_assign	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_check_assign()$/;"	f
 _zsh_highlight_main_highlighter_check_path	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_check_path()$/;"	f
 _zsh_highlight_main_highlighter_expand_path	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_expand_path()$/;"	f
 _zsh_highlight_main_highlighter_highlight_argument	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_argument()$/;"	f
+_zsh_highlight_main_highlighter_highlight_arithmetic	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_arithmetic()$/;"	f
 _zsh_highlight_main_highlighter_highlight_backtick	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_backtick()$/;"	f
 _zsh_highlight_main_highlighter_highlight_dollar_quote	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_dollar_quote()$/;"	f
 _zsh_highlight_main_highlighter_highlight_double_quote	modules/syntax-highlighting/external/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_double_quote()$/;"	f
@@ -478,7 +483,9 @@ async_worker_eval	modules/prompt/external/async/async.zsh	/^async_worker_eval() 
 async_worker_eval	modules/prompt/external/pure/async.zsh	/^async_worker_eval() {$/;"	f
 attach!	modules/autosuggestions/external/spec/terminal_session.rb	/^  def attach!$/;"	f	class:TerminalSession
 aurget	modules/pacman/init.zsh	/^function aurget {$/;"	f
+b	modules/syntax-highlighting/external/highlighters/main/test-data/alias-loop.zsh	/^function b() {} # beware of ALIAS_FUNC_DEF$/;"	f
 backgroundColor	modules/prompt/external/powerlevel9k/functions/colors.zsh	/^function backgroundColor() {$/;"	f
+bar	modules/syntax-highlighting/external/highlighters/main/test-data/array-cmdsep1.zsh	/^bar(){}$/;"	f
 bindkey	modules/editor/init.zsh	/^function bindkey-all {$/;"	f
 build_and_run	modules/prompt/external/powerlevel9k/test-in-docker	/^build_and_run() {$/;"	f
 cannot	init.zsh	/^    function cannot-fast-forward {$/;"	f
@@ -517,6 +524,7 @@ dig	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^  dig() 
 dkmd	modules/docker/init.zsh	/^function dkmd {$/;"	f
 dkme	modules/docker/init.zsh	/^function dkme {$/;"	f
 doas	modules/syntax-highlighting/external/highlighters/main/test-data/precommand4.zsh	/^doas(){}$/;"	f
+ed	modules/syntax-highlighting/external/highlighters/main/test-data/opt-shwordsplit1.zsh	/^ed() { command ed "$@" }$/;"	f
 editor	modules/editor/init.zsh	/^function editor-info {$/;"	f
 endSkipping	modules/prompt/external/powerlevel9k/shunit2/shunit2	/^endSkipping() { __shunit_skip=${SHUNIT_FALSE}; }$/;"	f
 err	modules/prompt/external/powerlevel9k/test-in-docker	/^err()$/;"	f
@@ -528,6 +536,12 @@ fail	modules/prompt/external/powerlevel9k/shunit2/shunit2	/^fail() {$/;"	f
 failNotEquals	modules/prompt/external/powerlevel9k/shunit2/shunit2	/^failNotEquals() {$/;"	f
 failNotSame	modules/prompt/external/powerlevel9k/shunit2/shunit2	/^failNotSame() {$/;"	f
 failSame	modules/prompt/external/powerlevel9k/shunit2/shunit2	/^failSame()$/;"	f
+fakeIfconfig	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function fakeIfconfig() {$/;"	f
+fakeIfconfig	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function fakeIfconfig() {$/;"	f
+fakeIfconfig	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function fakeIfconfig() {$/;"	f
+fakeIp	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function fakeIp() {$/;"	f
+fakeIp	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function fakeIp() {$/;"	f
+fakeIp	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function fakeIp() {$/;"	f
 fasd	modules/fasd/external/fasd	/^fasd() {$/;"	f
 fasd_cd	modules/fasd/external/fasd	/^fasd_cd() {$/;"	f
 fasd_cd	modules/fasd/init.zsh	/^function fasd_cd {$/;"	f
@@ -583,9 +597,6 @@ instant_prompt_time	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^in
 instant_prompt_user	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^instant_prompt_user() {$/;"	f
 instant_prompt_vi_mode	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^instant_prompt_vi_mode() {$/;"	f
 instant_prompt_vim_shell	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^function instant_prompt_vim_shell() {$/;"	f
-ip	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^    ip(){$/;"	f
-ip	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^  ip(){$/;"	f
-ipconfig	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^  ipconfig() {$/;"	f
 is	modules/helper/init.zsh	/^function is-autoloadable {$/;"	f
 is	modules/helper/init.zsh	/^function is-bsd {$/;"	f
 is	modules/helper/init.zsh	/^function is-callable {$/;"	f
@@ -637,6 +648,7 @@ overwrite	modules/editor/init.zsh	/^function overwrite-mode {$/;"	f
 p10k	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^  function p10k() {$/;"	f
 p10k	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^function p10k() {$/;"	f
 p10k	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^function p10k-instant-prompt-finalize() {$/;"	f
+p9k	modules/prompt/external/powerlevel9k/functions/utilities.zsh	/^function p9k::parseIp() {$/;"	f
 p9k_configure	modules/prompt/external/powerlevel10k/internal/configure.zsh	/^function p9k_configure() {$/;"	f
 p9k_hello_world	modules/prompt/external/powerlevel9k/test/segments/custom.spec	/^    function p9k_hello_world() {$/;"	f
 p9k_prompt_segment	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^function p9k_prompt_segment() { p10k segment "$@" }$/;"	f
@@ -731,8 +743,14 @@ prompt_pure_async_git_dirty	modules/prompt/external/pure/pure.plugin.zsh	/^promp
 prompt_pure_async_git_dirty	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_git_dirty() {$/;"	f
 prompt_pure_async_git_fetch	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_git_fetch() {$/;"	f
 prompt_pure_async_git_fetch	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_git_fetch() {$/;"	f
+prompt_pure_async_git_stash	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_git_stash() {$/;"	f
+prompt_pure_async_git_stash	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_git_stash() {$/;"	f
+prompt_pure_async_init	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_init() {$/;"	f
+prompt_pure_async_init	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_init() {$/;"	f
 prompt_pure_async_refresh	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_refresh() {$/;"	f
 prompt_pure_async_refresh	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_refresh() {$/;"	f
+prompt_pure_async_renice	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_renice() {$/;"	f
+prompt_pure_async_renice	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_renice() {$/;"	f
 prompt_pure_async_tasks	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_tasks() {$/;"	f
 prompt_pure_async_tasks	modules/prompt/external/pure/pure.zsh	/^prompt_pure_async_tasks() {$/;"	f
 prompt_pure_async_vcs_info	modules/prompt/external/pure/pure.plugin.zsh	/^prompt_pure_async_vcs_info() {$/;"	f
@@ -811,8 +829,10 @@ run_command	modules/autosuggestions/external/spec/terminal_session.rb	/^  def ru
 run_command	modules/prompt/external/powerlevel10k/internal/wizard.zsh	/^function run_command() {$/;"	f
 run_test	modules/syntax-highlighting/external/tests/test-highlighting.zsh	/^run_test() {$/;"	f
 run_test	modules/syntax-highlighting/external/tests/test-perfs.zsh	/^run_test() {$/;"	f
+run_test	modules/syntax-highlighting/external/tests/test-zprof.zsh	/^run_test() {$/;"	f
 run_test_internal	modules/syntax-highlighting/external/tests/test-highlighting.zsh	/^run_test_internal() {$/;"	f
 run_test_internal	modules/syntax-highlighting/external/tests/test-perfs.zsh	/^run_test_internal() {$/;"	f
+run_test_internal	modules/syntax-highlighting/external/tests/test-zprof.zsh	/^run_test_internal() {$/;"	f
 run_test_module	modules/prompt/external/async/test.zsh	/^run_test_module() {$/;"	f
 runner_error	modules/prompt/external/powerlevel9k/shunit2/test_runner	/^runner_error() { echo "runner:ERROR $*" >&2; }$/;"	f
 runner_fatal	modules/prompt/external/powerlevel9k/shunit2/test_runner	/^runner_fatal() { echo "runner:FATAL $*" >&2; exit 1; }$/;"	f
@@ -849,6 +869,7 @@ setUp	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function setU
 setUp	modules/prompt/external/powerlevel9k/test/segments/kubecontext.spec	/^function setUp() {$/;"	f
 setUp	modules/prompt/external/powerlevel9k/test/segments/laravel_version.spec	/^function setUp() {$/;"	f
 setUp	modules/prompt/external/powerlevel9k/test/segments/load.spec	/^function setUp() {$/;"	f
+setUp	modules/prompt/external/powerlevel9k/test/segments/newline.spec	/^function setUp() {$/;"	f
 setUp	modules/prompt/external/powerlevel9k/test/segments/node_version.spec	/^function setUp() {$/;"	f
 setUp	modules/prompt/external/powerlevel9k/test/segments/nodeenv.spec	/^function setUp() {$/;"	f
 setUp	modules/prompt/external/powerlevel9k/test/segments/nvm.spec	/^function setUp() {$/;"	f
@@ -865,6 +886,7 @@ setUp	modules/prompt/external/powerlevel9k/test/segments/todo.spec	/^function se
 setUp	modules/prompt/external/powerlevel9k/test/segments/vcs-git.spec	/^function setUp() {$/;"	f
 setUp	modules/prompt/external/powerlevel9k/test/segments/vcs-hg.spec	/^function setUp() {$/;"	f
 setUp	modules/prompt/external/powerlevel9k/test/segments/vi_mode.spec	/^function setUp() {$/;"	f
+setUp	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function setUp() {$/;"	f
 set_default	modules/prompt/external/powerlevel9k/functions/utilities.zsh	/^function set_default() {$/;"	f
 setopt_helper	modules/prompt/external/async/async_test.zsh	/^setopt_helper() {$/;"	f
 show_cursor	modules/prompt/external/powerlevel10k/internal/wizard.zsh	/^function show_cursor() {$/;"	f
@@ -872,6 +894,7 @@ show_help	modules/prompt/external/async/test.zsh	/^show_help() {$/;"	f
 show_help	modules/prompt/external/powerlevel9k/test-in-docker	/^show_help() {$/;"	f
 slit	modules/utility/init.zsh	/^function slit {$/;"	f
 startSkipping	modules/prompt/external/powerlevel9k/shunit2/shunit2	/^startSkipping() { __shunit_skip=${SHUNIT_TRUE}; }$/;"	f
+stat	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^  function stat() {$/;"	f
 sub	modules/prompt/external/powerlevel10k/internal/wizard.zsh	/^  function sub() {$/;"	f
 sudo	modules/prompt/external/powerlevel9k/test/segments/context.spec	/^    function sudo() {$/;"	f
 sudo	modules/syntax-highlighting/external/highlighters/main/test-data/alias-nested-precommand.zsh	/^sudo(){}$/;"	f
@@ -910,6 +933,7 @@ tearDown	modules/prompt/external/powerlevel9k/test/segments/battery.spec	/^funct
 tearDown	modules/prompt/external/powerlevel9k/test/segments/context.spec	/^function tearDown() {$/;"	f
 tearDown	modules/prompt/external/powerlevel9k/test/segments/dir.spec	/^function tearDown() {$/;"	f
 tearDown	modules/prompt/external/powerlevel9k/test/segments/disk_usage.spec	/^function tearDown() {$/;"	f
+tearDown	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function tearDown() {$/;"	f
 tearDown	modules/prompt/external/powerlevel9k/test/segments/load.spec	/^function tearDown() {$/;"	f
 tearDown	modules/prompt/external/powerlevel9k/test/segments/nvm.spec	/^function tearDown() {$/;"	f
 tearDown	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function tearDown() {$/;"	f
@@ -921,7 +945,10 @@ tearDown	modules/prompt/external/powerlevel9k/test/segments/symfony_version.spec
 tearDown	modules/prompt/external/powerlevel9k/test/segments/todo.spec	/^function tearDown() {$/;"	f
 tearDown	modules/prompt/external/powerlevel9k/test/segments/vcs-git.spec	/^function tearDown() {$/;"	f
 tearDown	modules/prompt/external/powerlevel9k/test/segments/vcs-hg.spec	/^function tearDown() {$/;"	f
+tearDown	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function tearDown() {$/;"	f
 termColors	modules/prompt/external/powerlevel9k/functions/colors.zsh	/^function termColors() {$/;"	f
+terminate_jobs	modules/prompt/external/async/async.zsh	/^	terminate_jobs() {$/;"	f
+terminate_jobs	modules/prompt/external/pure/async.zsh	/^	terminate_jobs() {$/;"	f
 testActionHintWorks	modules/prompt/external/powerlevel9k/test/segments/vcs-git.spec	/^function testActionHintWorks() {$/;"	f
 testActionHintWorks	modules/prompt/external/powerlevel9k/test/segments/vcs-hg.spec	/^function testActionHintWorks() {$/;"	f
 testAddedFilesIconWorks	modules/prompt/external/powerlevel9k/test/segments/vcs-hg.spec	/^function testAddedFilesIconWorks() {$/;"	f
@@ -1012,6 +1039,7 @@ testDetectinUntrackedFilesInMainRepoWithDirtySubmodulesWork	modules/prompt/exter
 testDetectingUntrackedFilesInCleanSubdirectoryWorks	modules/prompt/external/powerlevel9k/test/segments/vcs-git.spec	/^function testDetectingUntrackedFilesInCleanSubdirectoryWorks() {$/;"	f
 testDetectingUntrackedFilesInNestedSubmodulesWork	modules/prompt/external/powerlevel9k/test/segments/vcs-git.spec	/^function testDetectingUntrackedFilesInNestedSubmodulesWork() {$/;"	f
 testDetectingUntrackedFilesInSubmodulesWork	modules/prompt/external/powerlevel9k/test/segments/vcs-git.spec	/^function testDetectingUntrackedFilesInSubmodulesWork() {$/;"	f
+testDirHomeTruncationWorksOnlyAtTheBeginning	modules/prompt/external/powerlevel9k/test/segments/dir.spec	/^function testDirHomeTruncationWorksOnlyAtTheBeginning() {$/;"	f
 testDirPathAbsoluteWorks	modules/prompt/external/powerlevel9k/test/segments/dir.spec	/^function testDirPathAbsoluteWorks() {$/;"	f
 testDirSeparatorColorHomeSubdirWorks	modules/prompt/external/powerlevel9k/test/segments/dir.spec	/^function testDirSeparatorColorHomeSubdirWorks() {$/;"	f
 testDirSeparatorColorRootSubSubdirWorks	modules/prompt/external/powerlevel9k/test/segments/dir.spec	/^function testDirSeparatorColorRootSubSubdirWorks() {$/;"	f
@@ -1064,10 +1092,8 @@ testIncomingHintWorks	modules/prompt/external/powerlevel9k/test/segments/vcs-git
 testIpSegmentPrintsNothingOnLinuxIfNotConnected	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentPrintsNothingOnLinuxIfNotConnected() {$/;"	f
 testIpSegmentPrintsNothingOnOsxIfNotConnected	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentPrintsNothingOnOsxIfNotConnected() {$/;"	f
 testIpSegmentWorksOnLinuxWithInterfaceSpecified	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentWorksOnLinuxWithInterfaceSpecified() {$/;"	f
-testIpSegmentWorksOnLinuxWithMultipleInterfacesSpecified	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentWorksOnLinuxWithMultipleInterfacesSpecified() {$/;"	f
 testIpSegmentWorksOnLinuxWithNoInterfaceSpecified	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentWorksOnLinuxWithNoInterfaceSpecified() {$/;"	f
 testIpSegmentWorksOnOsxWithInterfaceSpecified	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentWorksOnOsxWithInterfaceSpecified() {$/;"	f
-testIpSegmentWorksOnOsxWithMultipleInterfacesSpecified	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentWorksOnOsxWithMultipleInterfacesSpecified() {$/;"	f
 testIpSegmentWorksOnOsxWithNoInterfaceSpecified	modules/prompt/external/powerlevel9k/test/segments/ip.spec	/^function testIpSegmentWorksOnOsxWithNoInterfaceSpecified() {$/;"	f
 testIsSameColorCompareTwoNoneColorsCorrectly	modules/prompt/external/powerlevel9k/test/functions/colors.spec	/^function testIsSameColorCompareTwoNoneColorsCorrectly() {$/;"	f
 testIsSameColorComparesAnsiBackgroundAndNumericalColorCorrectly	modules/prompt/external/powerlevel9k/test/functions/colors.spec	/^function testIsSameColorComparesAnsiBackgroundAndNumericalColorCorrectly() {$/;"	f
@@ -1113,11 +1139,12 @@ testLoadSegmentWorksOnLinux	modules/prompt/external/powerlevel9k/test/segments/l
 testLoadSegmentWorksOnOsx	modules/prompt/external/powerlevel9k/test/segments/load.spec	/^function testLoadSegmentWorksOnOsx() {$/;"	f
 testMercurialIconWorks	modules/prompt/external/powerlevel9k/test/segments/vcs-hg.spec	/^function testMercurialIconWorks() {$/;"	f
 testMissingDirectoryCreation	modules/prompt/external/powerlevel9k/shunit2/examples/mkdir_test.sh	/^testMissingDirectoryCreation() {$/;"	f
+testNewlineDoesNotCreateExtraSegmentSeparator	modules/prompt/external/powerlevel9k/test/segments/newline.spec	/^function testNewlineDoesNotCreateExtraSegmentSeparator() {$/;"	f
+testNewlineMakesPreviousSegmentEndWell	modules/prompt/external/powerlevel9k/test/segments/newline.spec	/^function testNewlineMakesPreviousSegmentEndWell() {$/;"	f
 testNewlineOnRpromptCanBeDisabled	modules/prompt/external/powerlevel9k/test/powerlevel9k.spec	/^function testNewlineOnRpromptCanBeDisabled() {$/;"	f
 testNodeVersionSegmentPrintsNothingWithoutNode	modules/prompt/external/powerlevel9k/test/segments/node_version.spec	/^function testNodeVersionSegmentPrintsNothingWithoutNode() {$/;"	f
 testNodeVersionSegmentWorks	modules/prompt/external/powerlevel9k/test/segments/node_version.spec	/^function testNodeVersionSegmentWorks() {$/;"	f
 testNodeenvSegmentPrintsAtLeastNodeEnvWithoutNode	modules/prompt/external/powerlevel9k/test/segments/nodeenv.spec	/^function testNodeenvSegmentPrintsAtLeastNodeEnvWithoutNode() {$/;"	f
-testNodeenvSegmentPrintsNothingIfNodeVirtualEnvDisablePromptIsSet	modules/prompt/external/powerlevel9k/test/segments/nodeenv.spec	/^function testNodeenvSegmentPrintsNothingIfNodeVirtualEnvDisablePromptIsSet() {$/;"	f
 testNodeenvSegmentPrintsNothingIfNodeVirtualEnvIsNotSet	modules/prompt/external/powerlevel9k/test/segments/nodeenv.spec	/^function testNodeenvSegmentPrintsNothingIfNodeVirtualEnvIsNotSet() {$/;"	f
 testNodeenvSegmentPrintsNothingWithoutNode	modules/prompt/external/powerlevel9k/test/segments/nodeenv.spec	/^function testNodeenvSegmentPrintsNothingWithoutNode() {$/;"	f
 testNodeenvSegmentWorks	modules/prompt/external/powerlevel9k/test/segments/nodeenv.spec	/^function testNodeenvSegmentWorks() {$/;"	f
@@ -1155,6 +1182,9 @@ testPublicIpSegmentRefreshesCachesFileIfEmpty	modules/prompt/external/powerlevel
 testPublicIpSegmentUsesCurlAsFallbackMethodIfWgetIsNotAvailable	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function testPublicIpSegmentUsesCurlAsFallbackMethodIfWgetIsNotAvailable() {$/;"	f
 testPublicIpSegmentUsesDigAsFallbackMethodIfWgetAndCurlAreNotAvailable	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function testPublicIpSegmentUsesDigAsFallbackMethodIfWgetAndCurlAreNotAvailable() {$/;"	f
 testPublicIpSegmentWhenGoingOnline	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function testPublicIpSegmentWhenGoingOnline() {$/;"	f
+testPublicIpSegmentWithVPNTurnedOnAndFuzzyMatchingOnOsx	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function testPublicIpSegmentWithVPNTurnedOnAndFuzzyMatchingOnOsx() {$/;"	f
+testPublicIpSegmentWithVPNTurnedOnLinux	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function testPublicIpSegmentWithVPNTurnedOnLinux() {$/;"	f
+testPublicIpSegmentWithVPNTurnedOnOsx	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function testPublicIpSegmentWithVPNTurnedOnOsx() {$/;"	f
 testPublicIpSegmentWorksWithWget	modules/prompt/external/powerlevel9k/test/segments/public_ip.spec	/^function testPublicIpSegmentWorksWithWget() {$/;"	f
 testRamSegmentWorksOnBsd	modules/prompt/external/powerlevel9k/test/segments/ram.spec	/^function testRamSegmentWorksOnBsd() {$/;"	f
 testRamSegmentWorksOnLinux	modules/prompt/external/powerlevel9k/test/segments/ram.spec	/^function testRamSegmentWorksOnLinux() {$/;"	f
@@ -1239,6 +1269,10 @@ testVisualIdentifierAppearsAfterSegmentContentOnRightSegments	modules/prompt/ext
 testVisualIdentifierAppearsBeforeSegmentContentOnLeftSegments	modules/prompt/external/powerlevel9k/test/core/visual_identifier.spec	/^function testVisualIdentifierAppearsBeforeSegmentContentOnLeftSegments() {$/;"	f
 testVisualIdentifierIsPrintedInNumericalColorCode	modules/prompt/external/powerlevel9k/test/core/visual_identifier.spec	/^function testVisualIdentifierIsPrintedInNumericalColorCode() {$/;"	f
 testVisualIdentifierPrintsNothingIfNotAvailable	modules/prompt/external/powerlevel9k/test/core/visual_identifier.spec	/^function testVisualIdentifierPrintsNothingIfNotAvailable() {$/;"	f
+testVpnIpSegmentPrintsNothingOnLinuxIfNotConnected	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function testVpnIpSegmentPrintsNothingOnLinuxIfNotConnected() {$/;"	f
+testVpnIpSegmentPrintsNothingOnOsxIfNotConnected	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function testVpnIpSegmentPrintsNothingOnOsxIfNotConnected() {$/;"	f
+testVpnIpSegmentWorksOnLinuxWithInterfaceSpecified	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function testVpnIpSegmentWorksOnLinuxWithInterfaceSpecified() {$/;"	f
+testVpnIpSegmentWorksOnOsxWithInterfaceSpecified	modules/prompt/external/powerlevel9k/test/segments/vpn_ip.spec	/^function testVpnIpSegmentWorksOnOsxWithInterfaceSpecified() {$/;"	f
 test__async_job_multiple_commands	modules/prompt/external/async/async_test.zsh	/^test__async_job_multiple_commands() {$/;"	f
 test__async_job_print_hi	modules/prompt/external/async/async_test.zsh	/^test__async_job_print_hi() {$/;"	f
 test__async_job_stderr	modules/prompt/external/async/async_test.zsh	/^test__async_job_stderr() {$/;"	f
@@ -1268,6 +1302,7 @@ tmux_command	modules/autosuggestions/external/spec/terminal_session.rb	/^  def t
 tmux_socket_name	modules/autosuggestions/external/spec/terminal_session.rb	/^  def tmux_socket_name$/;"	f	class:TerminalSession
 toggle	modules/prompt/external/powerlevel10k/internal/p10k.zsh	/^  function toggle-right-prompt() { p10k display '*\/right'=hide,show; }$/;"	f
 trim	modules/prompt/external/powerlevel9k/debug/font-issues.zsh	/^trim() {$/;"	f
+trim_quotes	modules/prompt/external/powerlevel9k/debug/font-issues.zsh	/^trim_quotes() {$/;"	f
 truncatePath	modules/prompt/external/powerlevel9k/functions/utilities.zsh	/^function truncatePath() {$/;"	f
 truncatePathFromRight	modules/prompt/external/powerlevel9k/functions/utilities.zsh	/^function truncatePathFromRight() {$/;"	f
 typeset_p	modules/syntax-highlighting/external/tests/test-highlighting.zsh	/^typeset_p() {$/;"	f
