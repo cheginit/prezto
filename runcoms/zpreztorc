@@ -45,7 +45,8 @@ zstyle ':prezto:load' pmodule \
   'python' \
   'rsync' \
   'ssh' \
-  'git'
+  'git' \
+  'zsh-autocomplete'
 
 #
 # Autosuggestions
